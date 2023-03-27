@@ -1,0 +1,3 @@
+/home/maximilian-crossi/Dokumente/ring/build/CMakeFiles/rebuild_cache.dir
+/home/maximilian-crossi/Dokumente/ring/build/CMakeFiles/edit_cache.dir
+/home/maximilian-crossi/Dokumente/ring/build/CMakeFiles/ring.dir
