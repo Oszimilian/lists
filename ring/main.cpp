@@ -14,7 +14,7 @@ struct CAN
 #include "ring.h"
 #include "crossi_ring_buf.h"
 
-#define LEN_ 100000
+#define LEN_ 10000000
 
 std::shared_ptr<struct CAN> print_can(std::shared_ptr<struct CAN> can)
 {
@@ -34,7 +34,6 @@ std::shared_ptr<struct CAN> fill_can(std::shared_ptr<struct CAN> can)
     return can;
 }
 
-//void test_new_ring(ring_buf<std::shared_ptr<struct CAN>> &m)
 void test_new_ring(ring_buf<struct CAN> &m)
 {
     
@@ -42,9 +41,10 @@ void test_new_ring(ring_buf<struct CAN> &m)
     for (int i = 0; i < LEN_; i++)
     {
         std::optional<std::shared_ptr<struct CAN>> node = m.get_new_node();
+
         if (node.has_value())
         {
-            m.push_node(node.value());
+            m.push_node(fill_can(node.value()));
         } else {
             std::cout << "Fail: " << i << std::endl;
         }
@@ -68,7 +68,12 @@ void test_old_ring(ring<struct CAN> &m)
 
     for (int i = 0; i < LEN_; i++)
     {
-        m.push_node(m.get_new_node());
+        auto node = m.get_new_node();
+        node->payload->a = rand()%20;
+        node->payload->b = rand()%20;
+        node->payload->c = rand()%20;
+
+        m.push_node(node);
     }
 
     for (int i = 0; i < LEN_; i++)
@@ -82,7 +87,7 @@ int main()
     std::cout << "Halo Welt" << std::endl;
 
     ring_buf<struct CAN> m(LEN_);
-    //ring_buf<std::shared_ptr<struct CAN>> m(LEN_);
+
     ring<struct CAN> n(LEN_);
 
     auto start_new = std::chrono::high_resolution_clock::now();

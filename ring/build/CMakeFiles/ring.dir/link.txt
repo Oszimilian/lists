@@ -1,1 +1,1 @@
-/usr/bin/c++     CMakeFiles/ring.dir/main.cpp.o  -o ring 
+/usr/bin/c++   -O3   CMakeFiles/ring.dir/main.cpp.o  -o ring 

@@ -39,7 +39,7 @@ class ring_buf
             }
         }
 
-        void push_node(std::shared_ptr<T> &node)
+        void push_node(std::shared_ptr<T> node)
         {
             _user_list.get()->push_back(node);
         }
@@ -56,7 +56,7 @@ class ring_buf
             }
         }
 
-        void ruse_node(std::shared_ptr<T> &node)
+        void ruse_node(std::shared_ptr<T> node)
         {
             _reuse_list.get()->push_back(node);
         }

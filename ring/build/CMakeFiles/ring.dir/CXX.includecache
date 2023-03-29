@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/maximilian-crossi/Dokumente/ring/crossi_ring_buf.h
+/home/maximilian-crossi/Git/lists/ring/crossi_ring_buf.h
 iostream
 -
 mutex
@@ -20,7 +20,7 @@ string.h
 string
 -
 
-/home/maximilian-crossi/Dokumente/ring/main.cpp
+/home/maximilian-crossi/Git/lists/ring/main.cpp
 iostream
 -
 memory
@@ -32,11 +32,11 @@ optional
 chrono
 -
 ring.h
-/home/maximilian-crossi/Dokumente/ring/ring.h
+/home/maximilian-crossi/Git/lists/ring/ring.h
 crossi_ring_buf.h
-/home/maximilian-crossi/Dokumente/ring/crossi_ring_buf.h
+/home/maximilian-crossi/Git/lists/ring/crossi_ring_buf.h
 
-/home/maximilian-crossi/Dokumente/ring/ring.h
+/home/maximilian-crossi/Git/lists/ring/ring.h
 iostream
 -
 mutex
