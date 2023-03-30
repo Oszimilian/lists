@@ -1,3 +1,3 @@
-/home/maximilian-crossi/Git/lists/ring/build/CMakeFiles/rebuild_cache.dir
-/home/maximilian-crossi/Git/lists/ring/build/CMakeFiles/edit_cache.dir
-/home/maximilian-crossi/Git/lists/ring/build/CMakeFiles/ring.dir
+/home/maximilian/Git/lists/ring/build/CMakeFiles/rebuild_cache.dir
+/home/maximilian/Git/lists/ring/build/CMakeFiles/edit_cache.dir
+/home/maximilian/Git/lists/ring/build/CMakeFiles/ring.dir

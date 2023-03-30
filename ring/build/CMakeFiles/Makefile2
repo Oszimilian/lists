@@ -44,10 +44,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/maximilian-crossi/Git/lists/ring
+CMAKE_SOURCE_DIR = /home/maximilian/Git/lists/ring
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/maximilian-crossi/Git/lists/ring/build
+CMAKE_BINARY_DIR = /home/maximilian/Git/lists/ring/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -74,14 +74,14 @@ clean: CMakeFiles/ring.dir/clean
 CMakeFiles/ring.dir/all:
 	$(MAKE) -f CMakeFiles/ring.dir/build.make CMakeFiles/ring.dir/depend
 	$(MAKE) -f CMakeFiles/ring.dir/build.make CMakeFiles/ring.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/maximilian-crossi/Git/lists/ring/build/CMakeFiles --progress-num=1,2 "Built target ring"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/maximilian/Git/lists/ring/build/CMakeFiles --progress-num=1,2 "Built target ring"
 .PHONY : CMakeFiles/ring.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ring.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/maximilian-crossi/Git/lists/ring/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/maximilian/Git/lists/ring/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ring.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/maximilian-crossi/Git/lists/ring/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/maximilian/Git/lists/ring/build/CMakeFiles 0
 .PHONY : CMakeFiles/ring.dir/rule
 
 # Convenience name for target.
