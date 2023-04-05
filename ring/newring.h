@@ -1,5 +1,5 @@
-#ifndef LIST_H
-#define LIST_H
+#ifndef NEW_RING_H
+#define NEW_RING_H
 
 #include <iostream>
 #include <mutex>
@@ -7,32 +7,32 @@
 #include <stdlib.h>
 #include <string.h>
 #include <string>
-
+#include <memory>
 
 
 template<class T>
-class ring
+class linked_ring
 {
     public:
 
 
         struct Node
         {
-            T *payload;
+            std::shared_ptr<T> payload;
             std::string socket_name;
             struct Node *next;
             struct Node *prev;
         };
         
 
-        ring(unsigned int start_leangh) : start_leangh(start_leangh)
+        linked_ring(unsigned int start_leangh) : start_leangh(start_leangh)
         {
-            this->usr_list = list_setup(list_create());
-            this->reuse_list = list_setup(list_create());
+            user_list =  list_setup(list_create());
+            reuse_list = list_setup(list_create());
             init_reuse_list();
         }
 
-        ring()
+        linked_ring()
         {
             this->start_leangh = 30;
             this->usr_list = list_setup(list_create());
@@ -40,7 +40,7 @@ class ring
             init_reuse_list();
         }
 
-        ~ring()
+        ~linked_ring()
         {
             struct Node *node = list_pop_tail(reuse_list);
 
@@ -100,30 +100,38 @@ class ring
         {
             struct Node *head;
             struct Node *tail;
-            unsigned int leangh;
+            std::size_t leangh;
         };
 
-        unsigned int start_leangh;
+        std::shared_ptr<T> user_list;
+        std::shared_ptr<T> reuse_list;
 
-        struct List *usr_list;
-        struct List *reuse_list;
 
-        void init_reuse_list()
+
+        void init_list(std::shared_ptr<List> &list, std::size_t len)
         {
+
+
+            for (std::size_t i = 0; i < len; i++)
+            {
+                std::shared_ptr<Node> &node = list_create_node(list_create_payload());
+                
+            }
+
             Node *node = nullptr;
 
             for (unsigned int i = 0; i <  this->start_leangh; i++)
             {
+
+
                 node = list_create_node(list_create_payload());
                 list_insert_head(this->reuse_list, node);
             }
         }
 
-        List *list_create()
+        std::shared_ptr<List>& list_create()
         {
-            List *list = new List;
-            return (list_handle_error(list)) ? list : nullptr;
-
+            return std::make_shared<List>();
         }
 
         int list_handle_error(void *input)
@@ -137,26 +145,25 @@ class ring
             }
         }
 
-        List *list_setup(struct List *list)
+        std::shared_ptr<List>& list_setup(std::shared_ptr<List> &list)
         {
-            list->head = nullptr;
-            list->tail = nullptr;
-            list->leangh = 0;
+            list.get()->head = nullptr;
+            list.get()->tail = nullptr;
+            list.get()->leangh = 0;
 
             return list;
         }
 
-        Node *list_create_node(T *data)
+        std::shared_ptr<Node>& list_create_node(std::shared_ptr<T> &payload)
         {
-            Node *node = new Node;
-            node->payload = data;
-            return (list_handle_error(node)) ? node : nullptr;
+            std::shared_ptr<Node> node = std::make_shared<T>();
+            node.get()->payload = payload;
+            return node;
         }
 
-        T *list_create_payload()
+        std::shared_ptr<T> list_create_payload()
         {
-            T *payload = new T;
-            return (list_handle_error(payload)) ? payload : nullptr;
+            retrun std::make_shared<T>();
         }
 
         Node *list_pick_node()
@@ -164,8 +171,14 @@ class ring
             return (this->reuse_list->leangh > 0) ? list_pop_tail(this->reuse_list) : list_create_node(list_create_payload());
         }
 
-        void list_insert_head(List *list, Node *node)
+        //void list_insert_head(List *list, Node *node)
+        void list_insert_head(std::shared_ptr<List> &list, std::shared_ptr<Node> node)
         {
+            if (list.get()->head = nullptr)
+            {
+                list.get()->head = 
+            }
+
             if (!list_handle_error(list) || !list_handle_error(node)) return;
 
             if (list->head == nullptr)

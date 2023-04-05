@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/maximilian/Git/lists/ring/main.cpp" "/home/maximilian/Git/lists/ring/build/CMakeFiles/ring.dir/main.cpp.o"
+  "/home/maximilian/Dokumente/lists/ring/main.cpp" "/home/maximilian/Dokumente/lists/ring/build/CMakeFiles/ring.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

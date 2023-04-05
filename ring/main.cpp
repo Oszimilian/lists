@@ -13,8 +13,9 @@ struct CAN
 
 #include "ring.h"
 #include "crossi_ring_buf.h"
+#include "list_mtx.h"
 
-#define LEN_ 10000000
+#define LEN_ 1000000
 
 std::shared_ptr<struct CAN> print_can(std::shared_ptr<struct CAN> can)
 {
@@ -82,6 +83,28 @@ void test_old_ring(ring<struct CAN> &m)
     }
 }
 
+void test_better_ring(list_mtx<struct CAN> &m)
+{
+    for (int i = 0; i <  LEN_; i++)
+    {
+        struct CAN t;
+        t.a = rand()%20;
+        t.b = rand()%20;
+        t.c = rand()%20;
+        m.push_node(t);
+    }
+
+    for (int i = 0; i < LEN_; i++)
+    {
+        std::optional<std::shared_ptr<struct CAN>> z = m.get_node();
+
+        if (z.has_value())
+        {
+            z.value();
+        }
+    }
+}
+
 int main()
 {
     std::cout << "Halo Welt" << std::endl;
@@ -90,8 +113,11 @@ int main()
 
     ring<struct CAN> n(LEN_);
 
+    list_mtx<struct CAN> q;
+
     auto start_new = std::chrono::high_resolution_clock::now();
-    test_new_ring(m);
+    //test_new_ring(m);
+    test_better_ring(q);
     auto end_new = std::chrono::high_resolution_clock::now();
     
     auto start_old = std::chrono::high_resolution_clock::now(); 
